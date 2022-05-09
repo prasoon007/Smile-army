@@ -1,0 +1,367 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<!-- Mirrored from demo.themefisher.com/cafedine/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Mar 2021 06:34:26 GMT -->
+<head>
+  <meta charset="utf-8">
+  <title>Smile Army </title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-sc.ale=1">
+
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href='{% static "plugins/bootstrap/bootstrap.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/themify/css/themify-icons.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/icofont/icofont.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/fontawesome/css/all.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/aos/aos.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/magnific-popup/magnific-popup.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/video-popup/modal-video.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/swiper/swiper.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/date-picker/datepicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/clock-picker/clockpicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/devices.min.css" %}'>
+
+  <!-- Main Stylesheet -->
+  <link href='{% static "css/style.css" %}' rel="stylesheet">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+  <link rel="icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+
+</head>
+
+<body>
+  <div class="preloader">
+    <img src='{% static "images/preloader.gif" %}' alt="preloader" class="img-fluid">
+  </div>
+<!-- Header Start -->
+
+<header class="navigation ">
+	<nav class="navbar navbar-expand-lg main-nav py-lg-3 position-absolute w-100" id="main-nav">
+		<div class="container">
+			<a class="navbar-brand" href='{% url "index" %}'>
+				<img src='{% static "images/favicon.png" %}' alt="" class="img-fluid">
+			</a>
+
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation"
+				aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="fa fa-bars"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navigation">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href='{% url "index" %}'>Home</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href='{% url "about" %}'>About</a></li>
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">Blog</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href='{% url "blog" %}'>Blog </a></li>
+							<li><a class="dropdown-item" href="#"></a></li>
+						</ul>
+					</li>
+
+					<li class="nav-item"><a class="nav-link" href='{% url "contact" %}'>Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<!-- Header Close -->
+<section class="section-header bg-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <h1 class="text-capitalize mb-4 font-lg text-white">Cart Page</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section cart">
+  <div class="container">
+	{% if user.is_superuser %}
+		<h1 class="jumbotron my-3">YOU ARE NOT ALLOWED HERE</h1>
+
+		<div class="container ">
+
+			<div class="text-center">
+				<img src="{% static 'images\oops.png' %}" class="img-fluid" alt="No Bookings" height="50%"
+					width="50%">
+			</div>
+			<button type="button" class="btn btn-primary btn-link "><a href="{% url 'index' %}"
+					class="text-white">Home</a></button>
+			<button type="button" class="btn btn-primary btn-link "><a href="{% url 'serve' %}"
+					class="text-white">Services</a></button>
+
+		</div>
+
+
+
+	{% else %}
+	</div>
+	{% if item|length == 0 %}
+	<div class="container-fluid">
+		<div class="jumbotron alert alert-danger"> &times; Your Shopping Cart is empty !!!</div>
+		<div class="container ">
+			<ul class="navbar navbar-expand-lg navbar-light bg-light">
+				<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="{% url 'serve' %}">Product</a></li>
+			</ul>
+
+			<div class="text-center">
+				<img src="{% static 'images\empty.png' %}" class="img-fluid" alt="No Bookings" height="50%"
+					width="50%">
+			</div>
+
+		</div>
+	</div>
+	{% else %}
+<!-- Content area -->
+
+
+
+<div class="content-area">
+
+	<section>
+		<div class="container">
+			{% if status %}
+			<h1>{{status}}</h1>
+			{% else %}
+			<h1>My Cart ({{item|length}})</h1>
+			{% endif %}
+
+			<ul class="navbar navbar-expand-lg navbar-light bg-light">
+				<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="{% url 'serve' %}">Product</a></li>
+			</ul>
+			<ul class="breadcrumb">
+				{% comment %} <li><a href='{% static "#" %}'>Home</a></li>
+				<li><a href='{% static "#" %}'>Pages</a></li>
+				<li class="active">Blog</li> {% endcomment %}
+			</ul>
+		</div>
+	</section>
+	{% if user.is_authenticated %}
+	{% if msg %}
+	<div class="{{cls}} mt-3">{{msg}}</div>
+	{% endif %}
+	<table class="table cart">
+		<thead>
+			<tr>
+				<th>Image</th>
+				<th>Name</th>
+				<th>description</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for i in item %}
+			<tr id="row{{i.id}}">
+				<td><img src="{{ i.imaging.image.url }}" style="height:100px;width:150px;"></td>
+				<td>{{i.Services.name}}</td>
+				<td>{{i.Services.desc}}</td>
+				<td>
+					<div class="row">
+						<div class="col-md-3">
+							<i class="fa fa-plus bg-success p-1 text-light rounded-circle" onclick="change_quan('{{i.id}}','plus')"></i>
+						</div>
+						<div class="col-md-6">
+							<input type="number" value="{{i.quantity}}" class="form-control" id="cart{{i.id}}">
+						</div>
+						<div class="col-md-3">
+							<i class="fa fa-minus bg-danger p-1 text-light rounded-circle" onclick="change_quan('{{i.id}}','minus')"></i>
+						</div>
+					</div>
+					
+				</td>
+				<td>
+					<i class="btn btn-danger ml-1 fa fa-trash" value="remove" onclick="remove('{{i.id}}')" ></i>
+				</td>
+			</tr>
+			<tr class="border-bottom">
+                <td colspan="2"></td>
+                <td><a href="{% url 'booking' %}" class="btn btn-main-border pull-right">
+                    Booking
+                  </a>
+                </td>
+              </tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endif %}
+	{% endif %}
+	{% endif %}
+
+  </div>
+  
+    <div class="row justify-content-end">
+      <div class="col-lg-12">
+        <div class="table-responsive">
+          <table class="table text-center table-cart">
+            <thead>
+            </thead>
+            <tbody>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="section footer">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
+				<div class="widget">
+					<h4 class="mb-3">About</h4>
+					<p></p>
+
+					<ul class="list-inline footer-socials mt-4">
+						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
+									class="ti-facebook mr-2"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
+						</li>
+						<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
+						</li>
+						<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
+									class="ti-dribbble mr-2 "></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
+				<div class="widget">
+					<h4 class="mb-3">Contact Info</h4>
+
+					<ul class="list-unstyled mb-0 footer-contact">
+						<li><i class="ti-mobile"></i>+91 9005618658</li>
+						<li><i class="ti-email"></i>kushagra@gmail.com</li>
+						<li><i class="ti-map"></i>95/6, Gomti Nagar, Lko</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
+				<div class="widget">
+					<h4 class="mb-3">Opening Hours</h4>
+
+					<div class="info mb-4">
+						<p class="mb-0">Monday - Thursday</p>
+						<h5>10:00 AM - 11:00 PM</h5>
+					</div>
+					<div class="info">
+						<p class="mb-0">Friday - Sunday</p>
+						<h5>12:00 AM - 03:00 AM</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</footer>
+
+<section class="footer-btm py-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
+							class="text-white">themefisher.com</a></p>
+
+					<div class="footer-menu mt-3 mt-lg-0">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item pl-2"><a href='{% url "index" %}'>Home</a></li>
+							<li class="list-inline-item pl-2"><a href='{% url "about" %}'>About Us</a></li>
+							<li class="list-inline-item pl-2"><a href='{% url "gallery" %}'>Gallery</a></li>
+							<li class="list-inline-item pl-2"><a href='{% url "policy" %}'>Privacy Policy</a></li>
+							<li class="list-inline-item pl-2"><a href='{% url "terms" %}'>Use of terms</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- jQuery -->
+<script src='{% static "plugins/jQuery/jquery.min.js" %}'></script>
+<!-- Bootstrap JS -->
+<script src='{% static "plugins/bootstrap/bootstrap.min.js" 5}'></script>
+<script src='{% static "plugins/aos/aos.js" 5}'></script>
+<script src='{% static "plugins/shuffle/shuffle.min.js" %}'></script>
+<script src='{% static "plugins/magnific-popup/jquery.magnific-popup.min.js" %}'></script>
+<script src='{% static "plugins/date-picker/datepicker.min.js" %}'></script>
+<script src='{% static "plugins/clock-picker/clockpicker.min.js" %}'></script>
+<script src='{% static "plugins/video-popup/jquery-modal-video.min.js" %}'></script>
+<script src='{% static "plugins/swiper/swiper.min.js" %}'></script>
+<script src='{% static "plugins/instafeed/instafeed.min.js" %}'></script>
+<script src='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.js" %}'></script>
+
+ <!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script> 
+<script src='{% static "plugins/google-map/gmap.js" %}'></script>
+<!-- Main Script -->
+<script src='{% static "js/contact.js" %}'></script>
+<script src='{% static "js/script.js" %}'></script>
+
+
+<script>
+	function remove(id)
+	{
+		$.ajax(
+			{
+				url:"{% url 'remove_product' %}",
+				data:{delete_cart:id},
+				success:function(data)
+				{
+					$("#row"+id).hide();
+				}
+			}
+		)
+	}
+
+	function change_quan(id,action){
+		let old = $("#cart"+id).val();
+		 
+		quan = 0
+		if(action=="plus"){
+			quan += parseInt(old)+1
+		}else{
+			quan += parseInt(old)-1
+		}
+	
+		$("#cart"+id).val(quan);
+		
+		$.ajax({
+			url:"{% url 'remove_product' %}",
+			type:"get",
+			data:{cid:id, quantity:quan},
+			success:function(data){
+				
+			  if(data==0){
+				 remove_cart(id);
+			  }
+			}
+		})
+	}
+</script>
+
+<!-- Mirrored from demo.themefisher.com/cafedine/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Mar 2021 06:34:27 GMT -->
+</html>

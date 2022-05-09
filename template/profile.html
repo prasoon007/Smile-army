@@ -1,0 +1,210 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>Smile Army</title>
+      <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href='{% static "plugins/bootstrap/bootstrap.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/themify/css/themify-icons.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/icofont/icofont.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/fontawesome/css/all.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/aos/aos.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/magnific-popup/magnific-popup.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/video-popup/modal-video.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/swiper/swiper.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/date-picker/datepicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/clock-picker/clockpicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/devices.min.css" %}'>
+
+  <!-- Main Stylesheet -->
+  <link href='{% static "css/style.css" %}' rel="stylesheet">
+    <!--Favicon start-->
+    <link rel="shortcut icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+    <link rel="icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+  
+  </head>
+  
+  <body>
+    <div class="preloader">
+      <img src='{% static "images/preloader.gif" %}' alt="preloader" class="img-fluid">
+    </div>
+
+    <!--scripting-->    
+    <style>
+        body{margin-top:20px;
+        color: #bcd0f7;
+            background: #1A233A;
+        }
+        .account-settings .user-profile {
+            margin: 0 0 1rem 0;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+        .account-settings .user-profile .user-avatar {
+            margin: 0 0 1rem 0;
+        }
+        .account-settings .user-profile .user-avatar img {
+            width: 90px;
+            height: 90px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            border-radius: 100px;
+        }
+        .account-settings .user-profile h5.user-name {
+            margin: 0 0 0.5rem 0;
+        }
+        .account-settings .user-profile h6.user-email {
+            margin: 0;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+        .account-settings .about {
+            margin: 1rem 0 0 0;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        .card {
+            background: #272E48;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 0;
+            margin-bottom: 1rem;
+        }
+        .form-control {
+            border: 1px solid #596280;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            font-size: .825rem;
+            background: #1A233A;
+            color: #bcd0f7;
+        }
+        </style>
+        <!--end scripting-->
+
+        <div class="container">
+        <div class="row gutters">
+            <form method="post"action='{% url "profile" %}'>
+				{% csrf_token %}
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="account-settings">
+                                        
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img src="{{ data.profile_picture.url }}" alt="upload-profile_picture">
+                                    </div>
+                                    <h5 class="user-name">{{user.first_name}} {{user.last_name}}</h5>
+                                    <h6 class="user-name">{{user.username}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Personal Details</h6>
+                                </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name" value="{{user.first_name}} {{user.last_name}}">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="eMail">Email</label>
+                                    <input type="email" class="form-control" id="eMail" placeholder="Enter email ID" value="{{user.email}}">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Enter phone number" value="{{ data.contact_no }}">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="Adhar">Adhar Card</label>
+                                    <input type="text" class="form-control" id="Adhar" name="aadhar_id" placeholder="adhar id" value="{{ data.aadhar_id}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-3 text-primary">Address</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="Street">Street</label>
+                                    <input type="name" class="form-control" id="Street" placeholder="Enter Street" value="{{ data.address}}">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="ciTy">City</label>
+                                    <input type="name" class="form-control" id="ciTy" placeholder="Enter City" value="{{ data.city}}">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="sTate">State</label>
+                                    <input type="text" class="form-control" id="sTate" nane="state" placeholder="Enter State" value="{{ data.state}}">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="pin">Pin Code</label>
+                                    <input type="text" class="form-control" id="pin" placeholder="pin" value={{data.pin}}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <a href="{% url 'updateprofile' %}"><button class="btn btn-success" type="submit" name="updateprofile" value="">Updata profile</button></a>
+                                    
+                                    <a href="{% url 'index' %}" ><button class="btn btn-secondary" name="cancel" type="cancel">Cancel</button></a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+<!-- jQuery -->
+<script src='{% static "plugins/jQuery/jquery.min.js" %}'></script>
+<!-- Bootstrap JS -->
+<script src='{% static "plugins/bootstrap/bootstrap.min.js" %}'></script>
+<script src='{% static "plugins/aos/aos.js" %}'></script>
+<script src='{% static "plugins/shuffle/shuffle.min.js" %}'></script>
+<script src='{% static "plugins/magnific-popup/jquery.magnific-popup.min.js" %}'></script>
+<script src='{% static "plugins/date-picker/datepicker.min.js" %}'></script>
+<script src='{% static "plugins/clock-picker/clockpicker.min.js" %}'></script>
+<script src='{% static "plugins/video-popup/jquery-modal-video.min.js" %}'></script>
+<script src='{% static "plugins/swiper/swiper.min.js" %}'></script>
+<script src='{% static "plugins/instafeed/instafeed.min.js" %}'></script>
+<script src='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.js" %}'></script>
+<!-- Main Script -->
+<script src='{% static "js/contact.js" %}'></script>
+<script src='{% static "js/script.js" %}'></script>
+<!--agin-->
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>
+
+</body>
+</html>

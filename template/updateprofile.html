@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>Smile Army</title>
+    
+      <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href='{% static "plugins/bootstrap/bootstrap.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/themify/css/themify-icons.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/icofont/icofont.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/fontawesome/css/all.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/aos/aos.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/magnific-popup/magnific-popup.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/video-popup/modal-video.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/swiper/swiper.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/date-picker/datepicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/clock-picker/clockpicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/devices.min.css" %}'>
+
+  <!-- Main Stylesheet -->
+  <link href='{% static "css/style.css" %}' rel="stylesheet">
+    <!--Favicon start-->
+    <link rel="shortcut icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+    <link rel="icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+  
+  </head>
+  
+  <body>
+    <div class="preloader">
+      <img src='{% static "images/preloader.gif" %}' alt="preloader" class="img-fluid">
+    </div>
+
+    <!--scripting-->    
+    <style>
+        body{margin-top:20px;
+            color: #bcd0f7;
+                background: #1A233A;
+            }
+            .account-settings .user-profile {
+                margin: 0 0 1rem 0;
+                padding-bottom: 1rem;
+                text-align: center;
+            }
+            .account-settings .user-profile .user-avatar {
+                margin: 0 0 1rem 0;
+            }
+            .account-settings .user-profile .user-avatar img {
+                width: 90px;
+                height: 90px;
+                -webkit-border-radius: 100px;
+                -moz-border-radius: 100px;
+                border-radius: 100px;
+            }
+            .account-settings .user-profile h5.user-name {
+                margin: 0 0 0.5rem 0;
+            }
+            .account-settings .user-profile h6.user-email {
+                margin: 0;
+                font-size: 0.8rem;
+                font-weight: 400;
+            }
+            .account-settings .about {
+                margin: 1rem 0 0 0;
+                font-size: 0.8rem;
+                text-align: center;
+            }
+            .card {
+                background: #272E48;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                border: 0;
+                margin-bottom: 1rem;
+            }
+            .form-control {
+                border: 1px solid #596280;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                font-size: .825rem;
+                background: #1A233A;
+                color: #bcd0f7;
+            }
+    </style>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+                <div class="my-4">
+                    
+                    <form method="POST" action="{% url 'updateprofile' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row mt-5 align-items-center">
+                            <div class="col-md-3 text-center mb-5">
+                                <div class="card-body-media-aligin-items-center">
+                                    <img src="{{ data.profile_picture.url }}" alt="profile picture" class="d-block-ui-w-80 img-fluid" /> &nbsp;
+                                    <div class="media-body-ml-4">
+                                        <label class="btn btn-main"><input type="file" name="img" class="account-setting-fileinput"> </label> &nbsp;
+                                        <button type="button" class="btn btn-main"> Reset</button>
+                                        <div class="text-ligt-small-mt-1"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstname">Firstname</label>
+                                <input type="text"  class="form-control" name="fname" value="{{user.first_name}}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname">Lastname</label>
+                                <input type="text"  class="form-control" name="lname" value="{{user.last_name}}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lastname">Username</label>
+                                <input type="text"  class="form-control" name="uname" value="{{user.username}}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control"  name="email" value="{{user.email}}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Aadhar_id">Aadhar id</label>
+                                <input type="text" class="form-control"  name="aadhar_id" value="{{user.aadhar_id}}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="Contact">Contact no.</label>
+                                <input type="text" class="form-control"  name="phone" value="{{user.phone}}" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAddress5">Address</label>
+                            <input type="text" class="form-control" placeholder="Address"  name="address" value="{{user.address}}" />
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4 ">
+                                <label for="sTate">State</label>
+                                <input type="text" class="form-control" name="state" placeholder="Enter State" value="{{ user.state}}">
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="inputZip5">City</label>
+                                <input type="text" class="form-control" placeholder="City"  name="city" value="{{user.city}}" />
+                            </div>
+                            
+                            <div class="form-group col-md-4 ">
+                                <label for="inputZip5">Pin</label>
+                                <input type="text" class="form-control" placeholder="Pin Code" name="pin" value="{{user.pin}}" />
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword">New Password</label>
+                                <input type="password" class="form-control"  name="password" value="{{user.password}}" />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword6">Confirm Password</label>
+                                <input type="password" class="form-control"  name="conpassword" value="{{user.conpassword}}"/>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="Cancel" class="btn btn-secondary">Cancel</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>       
+
+<!-- jQuery -->
+<script src='{% static "plugins/jQuery/jquery.min.js" %}'></script>
+<!-- Bootstrap JS -->
+<script src='{% static "plugins/bootstrap/bootstrap.min.js" %}'></script>
+<script src='{% static "plugins/aos/aos.js" %}'></script>
+<script src='{% static "plugins/shuffle/shuffle.min.js" %}'></script>
+<script src='{% static "plugins/magnific-popup/jquery.magnific-popup.min.js" %}'></script>
+<script src='{% static "plugins/date-picker/datepicker.min.js" %}'></script>
+<script src='{% static "plugins/clock-picker/clockpicker.min.js" %}'></script>
+<script src='{% static "plugins/video-popup/jquery-modal-video.min.js" %}'></script>
+<script src='{% static "plugins/swiper/swiper.min.js" %}'></script>
+<script src='{% static "plugins/instafeed/instafeed.min.js" %}'></script>
+<script src='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.js" %}'></script>
+<!-- Main Script -->
+<script src='{% static "js/contact.js" %}'></script>
+<script src='{% static "js/script.js" %}'></script>
+<!--agin-->
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>
+
+</body>
+</html>

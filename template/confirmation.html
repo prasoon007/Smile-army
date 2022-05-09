@@ -1,0 +1,214 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<!-- Mirrored from demo.themefisher.com/cafedine/confirmation.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Mar 2021 06:34:27 GMT -->
+<head>
+  <meta charset="utf-8">
+  <title> Smile Army  </title>
+
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href='{% static "plugins/bootstrap/bootstrap.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/themify/css/themify-icons.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/icofont/icofont.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/fontawesome/css/all.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/aos/aos.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/magnific-popup/magnific-popup.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/video-popup/modal-video.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/swiper/swiper.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/date-picker/datepicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/clock-picker/clockpicker.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css" %}'>
+  <link rel="stylesheet" href='{% static "plugins/devices.min.css" %}'>
+
+  <!-- Main Stylesheet -->
+  <link href='{% static "css/style.css" %}' rel="stylesheet">
+
+  <!--Favicon-->
+  <link rel="shortcut icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+  <link rel="icon" href='{% static "images/favicon.png" %}' type="image/x-icon">
+
+</head>
+
+<body>
+  <div class="preloader">
+    <img src='{% static "images/preloader.gif" %}' alt="preloader" class="img-fluid">
+  </div>
+<!-- Header Start -->
+
+<header class="navigation ">
+	<nav class="navbar navbar-expand-lg main-nav py-lg-3 position-absolute w-100" id="main-nav">
+		<div class="container">
+			<a class="navbar-brand" href='{% url "index" %}'>
+				<img src='{% static "images/favicon.png" %}' alt="" class="img-fluid">
+			</a>
+
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation"
+				aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="fa fa-bars"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navigation">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href='{% url "index" %}'>Home</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href='{% url "about" %}'>About</a></li>
+					<li class="nav-item"><a class="nav-link" href='{% url "menu" %}'>Recipes</a></li>
+					<li class="nav-item"><a class="nav-link" href='{% url "gallery" %}'>Gallery</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">Reservation</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Reservation</a></li>
+							<li><a class="dropdown-item" href="#"></a></li>
+							<li><a class="dropdown-item" href="#"></a>Confirmation</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">Blog</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href='{% url "blog" %}'>Blog </a></li>
+							<li><a class="dropdown-item" href="#"></a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href='{% url "contact" %}'>Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<!-- Header Close -->
+<section class="section-header bg-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <h1 class="text-capitalize mb-4 font-lg text-white">Confirmation</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section thank">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="font-lg mb-4"> <span class="text-primary">Thank you</span> <br>for your Requesting</h2>
+                <p>Your order hasn’t shipped yet but we will send you an email when it does.</p>
+                <div class="mt-4">
+                  <a href='{% url "menu" %}' class="btn btn-black mt-4">back to Shop</a>
+                  <a href="#" class="btn btn-solid-border mt-4">track order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="section footer">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
+				<div class="widget">
+					<h4 class="mb-3">About</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
+
+					<ul class="list-inline footer-socials mt-4">
+						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
+									class="ti-facebook mr-2"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
+						</li>
+						<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
+						</li>
+						<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
+									class="ti-dribbble mr-2 "></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
+				<div class="widget">
+					<h4 class="mb-3">Contact Info</h4>
+
+					<ul class="list-unstyled mb-0 footer-contact">
+						<li><i class="ti-mobile"></i>+91 9005618658</li>
+						<li><i class="ti-email"></i>kushagra@gmail.com</li>
+						<li><i class="ti-map"></i>95/6, Gomti Nagar, Lko</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="row justify-content-center mt-5">
+			<div class="col-lg-6 text-center">
+				<h4 class="text-white-50 mb-3">Get latest food recipe at your inbox</h4>
+				<form action="#" class="footer-newsletter">
+					<div class="form-group">
+						<button class="button"><span class="ti-email"></span></button>
+						<input type="email" class="form-control" placeholder="Enter Email">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<section class="footer-btm py-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
+							class="text-white">themefisher.com</a></p>
+
+					<div class="footer-menu mt-3 mt-lg-0">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item pl-2"><a href='{% url "index" %}'>Home</a></li>
+							<li class="list-inline-item pl-2"><a href='{% url "about" %}'>About Us</a></li>
+							<li class="list-inline-item pl-2"><a href='{% url "gallery" %}'>Gallery</a></li>
+							<li class="list-inline-item pl-2"><a href="#">Privacy Policy</a></li>
+							<li class="list-inline-item pl-2"><a href="#">Use of terms</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- jQuery -->
+<script src='{% static "plugins/jQuery/jquery.min.js" %}'></script>
+<!-- Bootstrap JS -->
+<script src='{% static "plugins/bootstrap/bootstrap.min.js" %}'></script>
+<script src='{% static "plugins/aos/aos.js" %}'></script>
+<script src='{% static "plugins/shuffle/shuffle.min.js" %}'></script>
+<script src='{% static "plugins/magnific-popup/jquery.magnific-popup.min.js" %}'></script>
+<script src='{% static "plugins/date-picker/datepicker.min.js" %}'></script>
+<script src='{% static "plugins/clock-picker/clockpicker.min.js" %}'></script>
+<script src='{% static "plugins/video-popup/jquery-modal-video.min.js" %}'></script>
+<script src='{% static "plugins/swiper/swiper.min.js" %}'></script>
+<script src='{% static "plugins/instafeed/instafeed.min.js" %}'></script>
+<script src='{% static "plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.js" %}'></script>
+
+ <!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script> 
+<script src='{% static "plugins/google-map/gmap.js" %}'></script>
+<!-- Main Script -->
+<script src='{% static "js/contact.js" %}'></script>
+<script src='{% static "js/script.js" %}'></script>
+
+
+<!-- Mirrored from demo.themefisher.com/cafedine/confirmation.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Mar 2021 06:34:27 GMT -->
+</html>
